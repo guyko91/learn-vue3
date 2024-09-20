@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <title>Vue3</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 값 바인딩 (v-bind) -->
+    <input type="text" v-bind:placeholder="message" />
+    <hr>
+
+    <!-- 이벤트 바인딩 (v-on) -->
+    <button v-on:click="reverseMessage">click</button>
+    <hr>
+
+    <!-- 양방향 바인딩 (v-model) -->
+    {{username}}
+    <input type="text" v-model="username" />
+    <hr>
+
+    <!-- 조건문 (v-if) -->
+    <p v-if="visible">보이나요 ?</p>
+    <button type="button" v-on:click="visible = true">visible</button>
+
+    <!-- 반복문 (v-for) -->
+    <ul>
+      <li v-for="item in items"> {{ item }}</li>
+    </ul>
+  </div>
+
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: "값을 입력해주세요!@@@",
+          username: "유저명",
+          visible: false,
+          items: ['사과', '딸기', '포도']
+        };
+      },
+      methods: {
+        hello() {
+          alert("Hello ~!")
+        },
+        reverseMessage() {
+          this.message = this.message.split("").reverse().join("");
+        }
+      },
+    });
+    app.mount('#app');
+  </script>
+</body>
+</html>
